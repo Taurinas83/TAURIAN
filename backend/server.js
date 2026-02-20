@@ -1,4 +1,17 @@
 require('dotenv').config();
+const fs = require('fs');
+const envPath = require('path').join(__dirname, '.env');
+
+// Auto-criar arquivo .env se não existir
+if (!fs.existsSync(envPath)) {
+  const envContent = `GROQ_API_KEY=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
+PORT=3000
+NODE_ENV=development
+FRONTEND_URL=http://localhost:5173`;
+  fs.writeFileSync(envPath, envContent);
+  console.log('✅ Arquivo .env criado automaticamente!');
+}
+
 const express = require('express');
 const cors = require('cors');
 const axios = require('axios');
