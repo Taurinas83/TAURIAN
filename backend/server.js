@@ -21,6 +21,7 @@ app.get('/health', (req, res) => {
 // Generate eBook content
 app.post('/api/generate-content', async (req, res) => {
   try {
+        console.log('📥 Requisição recebida:', req.body);
     const { title, topic, language = 'pt', ageRange = '4-6' } = req.body;
     const prompt = `Crie um outline detalhado para um eBook infantil intitulado "${title}" sobre ${topic} para crianças de ${ageRange} anos`;    
     const response = await axios.post('https://api.groq.com/openai/v1/chat/completions', {
@@ -33,8 +34,8 @@ app.post('/api/generate-content', async (req, res) => {
     
     res.json({ content: response.data.choices[0].message.content });
   } catch (error) {
-    res.status(500).json({ error: error.message });
-  }
+    console.error('❌ Erro na API:', error.response?.data || error.message);
+        res.status(500).json({ error: error.message });
 });
 
 // Generate images
