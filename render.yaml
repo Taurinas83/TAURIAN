@@ -3,15 +3,15 @@ services:
     name: taurian-api
     env: node
     plan: free
-    buildCommand: npm install
-    startCommand: npm start
+    buildCommand: cd backend && npm install
+    startCommand: cd backend && npm start
     envVars:
       - key: NODE_ENV
         value: production
       - key: PORT
         value: 3000
       - key: GROQ_API_KEY
-        value: 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
+        value: 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
       - key: REPLICATE_API_TOKEN
         value: r8_YrmSZFlONfnZR5E82c0LfuOk69I7W092YHH30
       - key: FIREBASE_PROJECT_ID
