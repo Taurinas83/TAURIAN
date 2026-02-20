@@ -41,6 +41,7 @@ app.post('/api/generate-content', async (req, res) => {
       model: 'llama-3.3-70b-versatile',      messages: [{ role: 'user', content: prompt }],
       max_tokens: 2000
     }, {
+            headers: { 'Authorization': `Bearer ${process.env.GROQ_API_KEY}` }
     
     res.json({ content: response.data.choices[0].message.content });
   } catch (error) {
