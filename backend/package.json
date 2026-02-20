@@ -1,0 +1,20 @@
+{
+  "name": "taurian-backend",
+  "version": "1.0.0",
+  "description": "Backend API for TAURIAN - Automatic eBook creation system for Amazon KDP",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node server.js"
+  },
+  "dependencies": {
+    "express": "^4.18.2",
+    "cors": "^2.8.5",
+    "dotenv": "^16.0.3",
+    "axios": "^1.3.4",
+    "firebase-admin": "^11.5.0"
+  },
+  "keywords": ["ebook", "kdp", "ai", "groq", "replicate"],
+  "author": "Taurian",
+  "license": "MIT"
+}
