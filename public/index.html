@@ -36,6 +36,16 @@ index.html  <!DOCTYPE html>
         <label for="topic">Tópico/Assunto</label>
         <input type="text" id="topic" name="topic" placeholder="Ex: Empreendedorismo Digital" required>
       </div>
+
+                  <div class="form-group">
+                                    <label for="ageRange">Faixa Etária</label>
+                                    <select id="ageRange" name="ageRange" required>
+                                                          <option value="0-3">0-3 anos (Bebês)</option>
+                                                          <option value="4-6" selected>4-6 anos (Pré-escola)</option>
+                                                          <option value="7-9">7-9 anos (Primeiros leitores)</option>
+                                                          <option value="10-12">10-12 anos (Leitores intermediários)</option>
+                                                      </select>
+                                </div>
       
       <div class="form-group">
         <label for="language">Idioma</label>
@@ -57,6 +67,7 @@ index.html  <!DOCTYPE html>
         const title = document.getElementById('title').value;
         const topic = document.getElementById('topic').value;
         const language = document.getElementById('language').value || 'pt';
+                const ageRange = document.getElementById('ageRange').value;
         
         statusDiv.textContent = 'Gerando conteúdo com IA...';
         statusDiv.classList.add('success');
@@ -65,8 +76,7 @@ index.html  <!DOCTYPE html>
         const response = await fetch('/api/generate-content', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ title, topic, language })
-        });
+            body: JSON.stringify({ title, topic, language, ageRange })        });
         
         if (response.ok) {
           const data = await response.json();
