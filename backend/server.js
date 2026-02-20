@@ -21,9 +21,8 @@ app.get('/health', (req, res) => {
 // Generate eBook content
 app.post('/api/generate-content', async (req, res) => {
   try {
-    const { title, topic, language = 'pt' } = req.body;
-    const prompt = `Crie um outline detalhado para um eBook intitulado "${title}" sobre ${topic}`;
-    
+    const { title, topic, language = 'pt', ageRange = '4-6' } = req.body;
+    const prompt = `Crie um outline detalhado para um eBook infantil intitulado "${title}" sobre ${topic} para crianças de ${ageRange} anos`;    
     const response = await axios.post('https://api.groq.com/openai/v1/chat/completions', {
       model: 'mixtral-8x7b-32768',
       messages: [{ role: 'user', content: prompt }],
