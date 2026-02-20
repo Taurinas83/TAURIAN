@@ -36,8 +36,8 @@ app.post('/api/generate-content', async (req, res) => {
   } catch (error) {
     console.error('❌ Erro na API:', error.response?.data || error.message);
         res.status(500).json({ error: error.message });
-});
-
+  }
+  });
 // Generate images
 app.post('/api/generate-images', async (req, res) => {
   try {
